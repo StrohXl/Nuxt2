@@ -7,24 +7,33 @@
           v-for="(item, i) in items"
           :key="i"
           :disabled="item.disabled == true && true"
+          @click="
+            i == 0
+              ? validarIdentidad()
+              : i == 1
+              ? adquirirMembresia()
+              : validarDocumentos()
+          "
         >
           <v-list-item-icon>
             <v-icon
               v-text="
-                item.disabled == true
+                item.state == 'select'
+                  ? 'mdi-arrow-right'
+                  : item.state == 'disabled'
                   ? 'mdi-alert-circle-outline'
-                  : item.error == true
+                  : item.state == 'error'
                   ? 'mdi-alpha-x-circle-outline'
-                  : item.process == true
-                  ? 'fas fa-circle-notch fa-spin'
-                  : 'mdi-check'
+                  : item.state == 'process'
+                  ? 'mdi-reload'
+                  : item.state == 'success' && 'mdi-check'
               "
               :color="
-                item.disabled == true
+                item.state == 'disabled'
                   ? '#424242'
-                  : item.error == true
+                  : item.state == 'error'
                   ? 'red'
-                  : item.process == true
+                  : item.state == 'process' || item.state == 'select'
                   ? 'white'
                   : 'green'
               "
@@ -33,7 +42,7 @@
           <v-list-item-content>
             <v-list-item-title
               >{{ item.text }}
-              <template v-if="item.process == true">
+              <template v-if="item.state == 'process'">
                 {{ number }}
               </template>
             </v-list-item-title>
@@ -45,41 +54,82 @@
 </template>
 <script>
 export default {
+  methods: {
+    validarIdentidad() {
+      this.items[0].state = 'process'
+      this.interval = setInterval(() => {
+        if (this.number != 0) {
+          this.number = this.number - 1
+        }
+        if (this.number == 0) {
+          this.items[0].state = 'success'
+          this.items[0].disabled = true
+          this.items[0].process = true
+          this.items[1].disabled = false
+          this.items[1].state = 'select'
+          this.selectedItem = 1
+          this.number = 5
+          clearInterval(this.interval)
+        }
+      }, 1000)
+    },
+    adquirirMembresia() {
+      this.items[1].state = 'process'
+      this.interval = setInterval(() => {
+        if (this.number != 0) {
+          this.number = this.number - 1
+        }
+        if (this.number == 0) {
+          this.items[1].state = 'success'
+          this.items[1].disabled = true
+          this.items[1].process = true
+          this.items[2].disabled = false
+          this.items[2].state = 'select'
+          this.selectedItem = 2
+          this.number = 3
+          clearInterval(this.interval)
+        }
+      }, 1000)
+    },
+    validarDocumentos() {
+      this.items[2].state = 'process'
+      this.interval = setInterval(() => {
+        if (this.number != 0) {
+          this.number = this.number - 1
+        }
+        if (this.number == 0) {
+          this.items[2].state = 'success'
+          this.items[2].disabled = true
+          this.items[2].process = true
+          clearInterval(this.interval)
+        }
+      }, 1000)
+    },
+  },
   data: () => ({
     selectedItem: 0,
     number: 5,
+    interval: '',
     items: [
       {
         text: 'Validar Identidad',
-        icon: 'mdi-clock',
-        iconAlert: 'mdi-alert-circle-outline',
+        state: 'select',
+        process: false,
         disabled: false,
-        process: false,
-        error: false,
-        select: true
       },
       {
-        select: false,
         text: 'Adquirir Membresia',
-        icon: 'mdi-account',
-        iconAlert: 'mdi-alert-circle-outline',
-        disabled: true,
+        state: 'disabled',
         process: false,
-        error: false,
+        disabled: true,
       },
       {
-        select: false,
         text: 'Verificando Documentos',
-        iconAlert: 'mdi-alert-circle-outline',
-        icon: 'mdi-flag',
+        state: 'disabled',
         disabled: true,
         process: false,
-        error: false,
       },
     ],
   }),
-  methods: {
-    validarIdentidad() {},
-  },
 }
 </script>
