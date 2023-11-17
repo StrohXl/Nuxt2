@@ -25,12 +25,17 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/css/fonts.css',
+    '~assets/css/transitions.css',
+    '@mdi/font/css/materialdesignicons.min.css',    
+    '@fortawesome/fontawesome-free/css/all.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
   ],
+  components: true,
   /*
   ** Nuxt.js dev-modules
   */
@@ -48,8 +53,11 @@ export default {
   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
+    defaultAssets: false,
+    iconfont: 'fa',
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -71,6 +79,11 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
-  }
+    },
+    extractCSS: true,
+    transpile: [
+      'vee-validate/dist/rules'
+    ]
+  },
+  pageTransition: 'page'
 }

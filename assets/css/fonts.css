@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'Poppins-Medium';
+  src: local("Poppins-Medium.ttf"),
+  url("../fonts/Poppins-Medium.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans-Light';
+  src: local("NunitoSans-Light.ttf"),
+  url("../fonts/NunitoSans-Light.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans-ExtraLight';
+  src: local("NunitoSans-ExtraLight.ttf"),
+  url("../fonts/NunitoSans-ExtraLight.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans-Regular';
+  src: local("NunitoSans-Regular.ttf"),
+  url("../fonts/NunitoSans-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans-SemiBold';
+  src: local("NunitoSans-SemiBold.ttf"),
+  url("../fonts/NunitoSans-SemiBold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans-Bold';
+  src: local("NunitoSans-Bold.ttf"),
+  url("../fonts/NunitoSans-Bold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'NunitoSans-ExtraBold';
+  src: local("NunitoSans-ExtraBold.ttf"),
+  url("../fonts/NunitoSans-ExtraBold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow-Medium';
+  src: local("Barlow-Medium.ttf"),
+  url("../fonts/Barlow-Medium.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Barlow-SemiBold';
+  src: local("Barlow-SemiBold.ttf"),
+  url("../fonts/Barlow-SemiBold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'BarlowCondensed-Medium';
+  src: local("BarlowCondensed-Medium.ttf"),
+  url("../fonts/BarlowCondensed-Medium.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'BarlowCondensed-Regular';
+  src: local("BarlowCondensed-Regular.ttf"),
+  url("../fonts/BarlowCondensed-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'BarlowCondensed-SemiBold';
+  src: local("BarlowCondensed-SemiBold.ttf"),
+  url("../fonts/BarlowCondensed-SemiBold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'BarlowCondensed-Bold';
+  src: local("BarlowCondensed-Bold.ttf"),
+  url("../fonts/BarlowCondensed-Bold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik-Regular';
+  src: local("Rubik-Regular.ttf"),
+  url("../fonts/Rubik-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik-Light';
+  src: local("Rubik-Light.ttf"),
+  url("../fonts/Rubik-Light.ttf") format('truetype');
+}

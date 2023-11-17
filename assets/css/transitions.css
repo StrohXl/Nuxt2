@@ -1,0 +1,11 @@
+.home-enter-active, .home-leave-active { transition: opacity .2s; }
+.home-enter, .home-leave-active { opacity: 0; }
+
+.fading{
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.fading:hover{
+    opacity: 1;
+}
