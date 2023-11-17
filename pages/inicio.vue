@@ -2,7 +2,7 @@
   <v-card class="card mt-md-4 mx-auto" style="background-color: #6ccff6">
     <v-row dense class="px-md-4 px-5 py-2 d-flex justify-center">
       <v-list class="v-list-validate-user" nav dense>
-        <v-subheader class="barlowc-sb f18 rh white--text mt-sm-2 mt-md-5 px-6">
+        <v-subheader class="barlowc-sb f18 rh white--text mt-sm-2 mt-md-5 px-6 text-center">
           <template v-if="res == 0">
             Para disfrutar de todos los beneficios de COEX, debes cumplir los
             siguientes requisitos
@@ -18,59 +18,63 @@
             Felicidades tu cuenta ha sido activada
           </template>
         </v-subheader>
-        <v-list-item-group v-model="selectedItem">
-          <v-list-item
-
-            v-for="(item, i) in items"
-            :key="i"
-            :disabled="item.disabled == true && true"
-            :class="
-              item.state == 'select' || item.state == 'process'
-                ? 'green accent-4 white--text'
-                : item.disabled == true && 'grey lighten-2 v-list-item-disabled '
-            "
-            @click="
-              i == 0
-                ? validarIdentidad()
-                : i == 1
-                ? adquirirMembresia()
-                : validarDocumentos()
-            "
-          >
-            <v-list-item-icon>
-              <v-icon
-                v-text="
-                  item.state == 'select'
-                    ? 'mdi-arrow-right'
-                    : item.state == 'disabled'
-                    ? 'mdi-alert-circle-outline'
-                    : item.state == 'error'
-                    ? 'mdi-alpha-x-circle-outline'
-                    : item.state == 'process'
-                    ? 'mdi-clock-time-five'
-                    : item.state == 'success' && 'mdi-check'
+        <v-row justify="center" class="mt-10">
+          <v-col cols="12" xs="12" sm="6" md="5" lg="4">
+            <v-list-item-group v-model="selectedItem">
+              <v-list-item
+                v-for="(item, i) in items"
+                :key="i"
+                :disabled="item.disabled == true && true"
+                :class="
+                  item.state == 'select' || item.state == 'process'
+                    ? 'green accent-4 white--text'
+                    : item.disabled == true &&
+                      'grey lighten-2 v-list-item-disabled '
                 "
-                :color="
-                  item.state == 'disabled'
-                    ? '#424242'
-                    : item.state == 'error'
-                    ? 'red'
-                    : item.state == 'process' || item.state == 'select'
-                    ? 'white'
-                    : 'green'
+                @click="
+                  i == 0
+                    ? validarIdentidad()
+                    : i == 1
+                    ? adquirirMembresia()
+                    : validarDocumentos()
                 "
-              ></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title
-                >{{ item.text }}
-                <template v-if="item.state == 'process'">
-                  {{ number }}
-                </template>
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
+              >
+                <v-list-item-icon>
+                  <v-icon
+                    v-text="
+                      item.state == 'select'
+                        ? 'mdi-arrow-right'
+                        : item.state == 'disabled'
+                        ? 'mdi-alert-circle-outline'
+                        : item.state == 'error'
+                        ? 'mdi-alpha-x-circle-outline'
+                        : item.state == 'process'
+                        ? 'mdi-clock-time-five'
+                        : item.state == 'success' && 'mdi-check'
+                    "
+                    :color="
+                      item.state == 'disabled'
+                        ? '#424242'
+                        : item.state == 'error'
+                        ? 'red'
+                        : item.state == 'process' || item.state == 'select'
+                        ? 'white'
+                        : 'green'
+                    "
+                  ></v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title class="text-center"
+                    >{{ item.text }}
+                    <template v-if="item.state == 'process'">
+                      {{ number }}
+                    </template>
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-col>
+        </v-row>
       </v-list>
     </v-row>
   </v-card>
@@ -168,14 +172,6 @@ export default {
   background: transparent !important;
   color: #fff;
 }
-.v-list-validate-user > .v-list-item-group {
-  max-width: 350px !important;
-  margin: auto;
-  padding-top: 2em;
-  display: grid;
-  gap: 0.5em;
-}
-
 .v-list-item-disabled {
   border-radius: 0 !important;
   color: #00000090 !important;
