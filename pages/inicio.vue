@@ -1,7 +1,12 @@
 <template>
-  <v-card class="mx-auto" max-width="300" tile>
+  <v-card class="card mt-md-4 mx-auto" style="background-color: #6CCFF6">
+    <v-row
+        dense
+        class="px-md-4 px-5 py-2"
+      >
     <v-list>
-      <v-subheader>Activar tu cuenta</v-subheader>
+      <v-subheader class="barlowc-sb f18 rh white--text mt-sm-2 mt-md-5 px-6">
+        Para disfrutar de todos los beneficios de COEX, debes cumplir los siguientes requisitos </v-subheader>
       <v-list-item-group v-model="selectedItem" color="primary">
         <v-list-item
           v-for="(item, i) in items"
@@ -50,6 +55,7 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+    </v-row>
   </v-card>
 </template>
 <script>
@@ -112,19 +118,19 @@ export default {
     interval: '',
     items: [
       {
-        text: 'Validar Identidad',
+        text: 'Validar tus documentos de identidad',
         state: 'select',
         process: false,
         disabled: false,
       },
       {
-        text: 'Adquirir Membresia',
+        text: 'Adquirir plan o membresia',
         state: 'disabled',
         process: false,
         disabled: true,
       },
       {
-        text: 'Verificando Documentos',
+        text: 'Tus documentos deben ser revisados',
         state: 'disabled',
         disabled: true,
         process: false,
