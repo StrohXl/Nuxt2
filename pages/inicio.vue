@@ -18,15 +18,16 @@
             Felicidades tu cuenta ha sido activada
           </template>
         </v-subheader>
-        <v-list-item-group v-model="selectedItem" color="green">
+        <v-list-item-group v-model="selectedItem">
           <v-list-item
+
             v-for="(item, i) in items"
             :key="i"
             :disabled="item.disabled == true && true"
             :class="
-              item.state == 'process'
-                ? 'v-list-item-green'
-                : item.disabled == true && 'v-list-item-disabled'
+              item.state == 'select' || item.state == 'process'
+                ? 'green accent-4 white--text'
+                : item.disabled == true && 'grey lighten-2 v-list-item-disabled '
             "
             @click="
               i == 0
@@ -172,19 +173,11 @@ export default {
   margin: auto;
   padding-top: 2em;
   display: grid;
-  gap: .5em;
+  gap: 0.5em;
 }
-.v-list-validate-user > .v-list-item-group > .v-list-item--active {
-  background: green;
-  color: #fff;
-}
-.v-list-item-green {
-  background: green;
-  color: #fff !important;
-}
+
 .v-list-item-disabled {
   border-radius: 0 !important;
-  background: rgb(114, 114, 114, .9);
-  color: rgba(250, 250, 250, .5) !important;
+  color: #00000090 !important;
 }
 </style>
