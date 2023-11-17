@@ -23,7 +23,11 @@
             v-for="(item, i) in items"
             :key="i"
             :disabled="item.disabled == true && true"
-            :class="item.state == 'process' && 'v-list-item-green'"
+            :class="
+              item.state == 'process'
+                ? 'v-list-item-green'
+                : item.disabled == true && 'v-list-item-disabled'
+            "
             @click="
               i == 0
                 ? validarIdentidad()
@@ -167,6 +171,8 @@ export default {
   max-width: 350px !important;
   margin: auto;
   padding-top: 2em;
+  display: grid;
+  gap: .5em;
 }
 .v-list-validate-user > .v-list-item-group > .v-list-item--active {
   background: green;
@@ -175,5 +181,10 @@ export default {
 .v-list-item-green {
   background: green;
   color: #fff !important;
+}
+.v-list-item-disabled {
+  border-radius: 0 !important;
+  background: rgb(114, 114, 114, .9);
+  color: rgba(250, 250, 250, .5) !important;
 }
 </style>
