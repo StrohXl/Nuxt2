@@ -8,7 +8,14 @@
             siguientes requisitos
           </template>
           <template v-if="res == 1">
-            texto valor 1
+            Por ultimo, para activar tu cuenta, debes de adquirir un plan de
+            membresia
+          </template>
+          <template v-if="res == 2">
+            Tus documentos deben de ser revisados
+          </template>
+          <template v-if="res == 3">
+            Felicidades tu cuenta ha sido activada
           </template>
         </v-subheader>
         <v-list-item-group v-model="selectedItem" color="green">
@@ -16,6 +23,7 @@
             v-for="(item, i) in items"
             :key="i"
             :disabled="item.disabled == true && true"
+            :class="item.state == 'process' && 'v-list-item-green'"
             @click="
               i == 0
                 ? validarIdentidad()
@@ -34,7 +42,7 @@
                     : item.state == 'error'
                     ? 'mdi-alpha-x-circle-outline'
                     : item.state == 'process'
-                    ? 'mdi-reload'
+                    ? 'mdi-clock-time-five'
                     : item.state == 'success' && 'mdi-check'
                 "
                 :color="
@@ -67,6 +75,7 @@ export default {
   methods: {
     validarIdentidad() {
       this.items[0].state = 'process'
+      this.items[0].disabled = true
       this.interval = setInterval(() => {
         if (this.number != 0) {
           this.number = this.number - 1
@@ -80,10 +89,12 @@ export default {
           this.selectedItem = 1
           this.number = 5
           clearInterval(this.interval)
+          this.res = 1
         }
       }, 1000)
     },
     adquirirMembresia() {
+      this.items[1].disabled = true
       this.items[1].state = 'process'
       this.interval = setInterval(() => {
         if (this.number != 0) {
@@ -98,6 +109,7 @@ export default {
           this.selectedItem = 2
           this.number = 3
           clearInterval(this.interval)
+          this.res = 2
         }
       }, 1000)
     },
@@ -112,6 +124,7 @@ export default {
           this.items[2].disabled = true
           this.items[2].process = true
           clearInterval(this.interval)
+          this.res = 3
         }
       }, 1000)
     },
@@ -158,5 +171,9 @@ export default {
 .v-list-validate-user > .v-list-item-group > .v-list-item--active {
   background: green;
   color: #fff;
+}
+.v-list-item-green {
+  background: green;
+  color: #fff !important;
 }
 </style>
