@@ -1,9 +1,11 @@
 <template>
   <v-card class="card mt-md-4 mx-auto" style="background-color: #6ccff6">
-    <v-row dense class="px-md-4 px-5 py-2 d-flex justify-center">
-      <v-list class="v-list-validate-user" nav dense>
-        <v-subheader class="barlowc-sb f18 rh white--text mt-sm-2 mt-md-5 px-6 text-center">
-          <template v-if="res == 0">
+    <v-row dense class="px-md-4 px-5 py-2 ">
+      <v-col cols="12" >
+        <v-list class="v-list-validate-user" nav dense>
+        <v-subheader class="barlowc-sb f18 rh white--text mt-sm-2 mt-md-5 px-6 text-center d-flex justify-center">
+          <p>
+            <template v-if="res == 0">
             Para disfrutar de todos los beneficios de COEX, debes cumplir los
             siguientes requisitos
           </template>
@@ -17,6 +19,7 @@
           <template v-if="res == 3">
             Felicidades tu cuenta ha sido activada
           </template>
+          </p>
         </v-subheader>
         <v-row justify="center" class="mt-10">
           <v-col cols="12" xs="12" sm="6" md="5" lg="4">
@@ -76,6 +79,7 @@
           </v-col>
         </v-row>
       </v-list>
+      </v-col>
     </v-row>
   </v-card>
 </template>
