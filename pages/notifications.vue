@@ -6,7 +6,7 @@
         <template v-for="(item, n) in getNotifications">
           <v-divider v-bind:key="n" v-if="n > 0 && n < count"></v-divider>
           <v-list-item
-            v-if="n < count"
+            v-if="n + 1 < count"
             :key="n"
             flat
             height="66"
@@ -44,7 +44,7 @@
           </v-list-item>
         </template>
       </v-list>
-      <v-btn @click="verMas" text v-if="count < getNotifications.length + 1">
+      <v-btn @click="verMas" text v-if="getNotifications.length + 1 > count">
         Ver Mas</v-btn
       >
     </v-card>
@@ -55,7 +55,7 @@ export default {
   name: 'Notifications',
   data() {
     return {
-      count: 10,
+      count: 11,
       notifications: this.$store.state.notifications,
     }
   },
@@ -69,7 +69,7 @@ export default {
       this.$store.commit('deleteAllNotifications')
     },
     verMas() {
-      this.count += 20
+      this.count += 10
     },
     deleteNotification(id) {
       this.$store.commit('deleteOneNotification', id)

@@ -1,7 +1,8 @@
 <template>
   <v-badge
     color="red"
-    :content="count"
+    :content="getNotifications.length"
+    :value="getNotifications.length"
     class="mx-6 mt-3 cursor-pointer barlowc-sb"
     offset-y="7"
   >
@@ -35,7 +36,7 @@
         >
           <v-list class="v-list-notification" three-line>
             <template v-for="(item, n) in getNotifications">
-              <v-divider v-if="n > 0 && n < 5"></v-divider>
+              <v-divider v-bind:key="n" v-if="n > 0 && n < 5"></v-divider>
               <v-list-item
                 v-if="n < 5"
                 :key="n"
