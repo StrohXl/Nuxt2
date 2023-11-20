@@ -11,7 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@googlemaps/js-api-loader": "^1.15.2",
     "@mdi/font": "^6.6.96",
     "@nuxtjs/auth": "^4.9.1",
@@ -40,6 +40,7 @@
     "vue-toastr": "^2.1.2",
     "vuetify": "^2.6.1",
     "vuetify-confirm": "^2.0.6",
+    "vuex": "^2.5.0",
     "webpack": "^4.46.0"
   },
   "devDependencies": {

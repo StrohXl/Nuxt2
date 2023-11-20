@@ -56,7 +56,7 @@
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
-      <sharedNotifications :notifications="notifications" />
+      <sharedNotifications  />
     </v-app-bar>
     <v-main>
       <v-container>
@@ -108,121 +108,11 @@ export default {
           to: '/inicio'
         }
       ],
-      notifications: [
-        {
-          name: 'Jose',
-          last_name: 'Martinez',
-          category: 'Electricista',
-          is_new: true,
-          avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-          description: 'Te ha enviado una cotización',
-          date: '2 de febrero. 12:32 p.m.'
-        },
-        {
-          name: 'Anderson',
-          last_name: 'Moreno',
-          category: 'Plomero',
-          is_new: true,
-          avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
-          description: 'Te ha rechazado una cotizacion',
-          date: '22 de febrero, 09:27 a.m.'
-        },
-        {
-          name: 'Henry',
-          last_name: 'Fernandez',
-          category: 'Carpintero',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
-          description: 'Te ha programado una visita presencial',
-          date: '21 de febrero, 08:21 p.m.'
-        },
-        {
-          name: 'Jose',
-          last_name: 'Martinez',
-          category: 'Electricista',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-          description: 'Te ha enviado una cotización',
-          date: '2 de febrero. 12:32 p.m.'
-        },
-        {
-          name: 'Anderson',
-          last_name: 'Moreno',
-          category: 'Plomero',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
-          description: 'Te ha rechazado una cotizacion',
-          date: '22 de febrero, 09:27 a.m.'
-        },
-        {
-          name: 'Henry',
-          last_name: 'Fernandez',
-          category: 'Carpintero',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
-          description: 'Te ha programado una visita presencial',
-          date: '21 de febrero, 08:21 p.m.'
-        },
-        {
-          name: 'Jose',
-          last_name: 'Martinez',
-          category: 'Electricista',
-          is_new: true,
-          avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-          description: 'Te ha enviado una cotización',
-          date: '2 de febrero. 12:32 p.m.'
-        },
-        {
-          name: 'Anderson',
-          last_name: 'Moreno',
-          category: 'Plomero',
-          is_new: true,
-          avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
-          description: 'Te ha rechazado una cotizacion',
-          date: '22 de febrero, 09:27 a.m.'
-        },
-        {
-          name: 'Henry',
-          last_name: 'Fernandez',
-          category: 'Carpintero',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
-          description: 'Te ha programado una visita presencial',
-          date: '21 de febrero, 08:21 p.m.'
-        },
-        {
-          name: 'Jose',
-          last_name: 'Martinez',
-          category: 'Electricista',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-          description: 'Te ha enviado una cotización',
-          date: '2 de febrero. 12:32 p.m.'
-        },
-        {
-          name: 'Anderson',
-          last_name: 'Moreno',
-          category: 'Plomero',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
-          description: 'Te ha rechazado una cotizacion',
-          date: '22 de febrero, 09:27 a.m.'
-        },
-        {
-          name: 'Henry',
-          last_name: 'Fernandez',
-          category: 'Carpintero',
-          is_new: false,
-          avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
-          description: 'Te ha programado una visita presencial',
-          date: '21 de febrero, 08:21 p.m.'
-        }
-      ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
     }
-  }
+  },
 }
 </script>
