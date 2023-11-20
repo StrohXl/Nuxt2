@@ -29,18 +29,21 @@
           </v-btn>
         </div>
         <v-container
-          :class="`pa-0 mt-3 ${getNotifications.length == 0 && 'text-center'}`"
+          :class="`pa-0 mt-3 d-flex flex-column align-center ${
+            getNotifications.length == 0 && 'text-center'
+          }`"
         >
           <v-list class="v-list-notification" three-line>
             <template v-for="(item, n) in getNotifications">
+              <v-divider v-if="n > 0 && n < 5"></v-divider>
               <v-list-item
                 v-if="n < 5"
                 :key="n"
                 flat
                 height="66"
-                class="d-flex elevation-0"
+                class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification"
               >
-                <v-list-item-avatar size="36" class="mr-4 borderAvatar">
+                <v-list-item-avatar size="50" class="mr-4 borderAvatar">
                   <v-img :src="item.avatar" />
                 </v-list-item-avatar>
 
@@ -53,15 +56,23 @@
                   >
                 </v-list-item-content>
 
-                <v-list-item-action v-if="item.is_new" class="mt-2">
+                <v-list-item-action
+                  v-if="item.is_new"
+                  class="mt-2"
+                  style="align-self: center"
+                >
                   <v-badge color="red" offset-x="16" offset-y="12" overlap dot>
-                    <v-btn icon @click="deleteAllNotification">
+                    <v-btn icon @click="deleteNotification(item.title)">
                       <v-icon> mdi-delete </v-icon>
                     </v-btn>
                   </v-badge>
                 </v-list-item-action>
-                <v-list-item-action v-else class="mt-2">
-                  <v-btn icon @click="deleteAllNotification">
+                <v-list-item-action
+                  v-else
+                  class="mt-2"
+                  style="align-self: center"
+                >
+                  <v-btn icon @click="deleteNotification(item.title)">
                     <v-icon> mdi-delete </v-icon>
                   </v-btn>
                 </v-list-item-action>
@@ -72,6 +83,9 @@
           <template v-if="getNotifications.length == 0">
             No hay Notificationes
           </template>
+          <v-btn @click="verTodas" text v-else>
+            Ver Todas
+          </v-btn>
         </v-container>
       </div>
     </v-menu>
@@ -79,12 +93,12 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'Notifications',
   data() {
     return {
       count: 2,
+      menu: false,
       notifications: this.$store.state.notifications,
     }
   },
@@ -97,6 +111,13 @@ export default {
     deleteAllNotification() {
       this.$store.commit('deleteAllNotifications')
     },
+    verTodas() {
+      this.menu = false
+      this.$router.push('/notifications')
+    },
+    deleteNotification(id) {
+      this.$store.commit('deleteOneNotification', id)
+    },
   },
 }
 </script>
@@ -105,12 +126,14 @@ export default {
 .rotate-notification {
   transform: rotate(15deg) !important;
 }
-.v-list-notification > .v-list-item {
-  padding: 0;
+.v-list-item-notification {
+  border-radius: 5px;
+}
+.v-list-item-notification .v-list-item__action {
+  margin-left: 0 !important;
 }
 .v-list-subtitle-description-notification {
   line-clamp: 1 !important;
   -webkit-line-clamp: 1 !important;
-  width: 100%;
 }
 </style>

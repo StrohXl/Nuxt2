@@ -115,6 +115,9 @@ export const mutations = {
   deleteAllNotifications(state) {
     state.notifications = []
   },
+  deleteOneNotification(state,id){
+    state.notifications = state.notifications.filter(i=>i.title != id)
+  }
 }
 export const actions = {}
 export const getters = {
