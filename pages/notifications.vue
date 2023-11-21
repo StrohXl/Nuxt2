@@ -1,7 +1,25 @@
 <template>
-  <div>
-    <v-card elevation="4" class="pa-3">
-      <h1>Notificaciones</h1>
+  <div class="d-flex justify-center">
+    <v-card
+      elevation="3"
+      class="pa-3 mt-3 mt-sm-4 mt-md-5"
+      :style="`width:${
+        $vuetify.breakpoint.xs
+          ? '100%'
+          : $vuetify.breakpoint.width > 700 && '650px'
+      }`"
+    >
+      <div class="d-flex align-baseline">
+        <h1 class="">Notificaciones</h1>
+        <v-spacer />
+
+        <div
+          class="f13 cursor-pointer blueItem rubik-r"
+          @click="deleteAllNotification"
+        >
+          Eliminar notificaciones
+        </div>
+      </div>
       <v-list class="v-list-notification" three-line>
         <template v-for="(item, n) in getNotifications">
           <v-divider v-bind:key="n" v-if="n > 0 && n < count"></v-divider>
@@ -44,7 +62,12 @@
           </v-list-item>
         </template>
       </v-list>
-      <v-btn @click="verMas" text v-if="getNotifications.length + 1 > count">
+      <v-btn
+        class="my-1 my-md-2"
+        @click="verMas"
+        text
+        v-if="getNotifications.length + 1 > count"
+      >
         Ver Mas</v-btn
       >
     </v-card>

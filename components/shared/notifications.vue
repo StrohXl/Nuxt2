@@ -25,9 +25,9 @@
           <div class="rmh barlowc-m">Notificaciones</div>
           <v-spacer />
 
-          <v-btn icon @click="deleteAllNotification">
-            <v-icon> mdi-delete </v-icon>
-          </v-btn>
+          <div class="f13 cursor-pointer blueItem rubik-r" @click="deleteAllNotification">
+            Eliminar notificaciones
+          </div>
         </div>
         <v-container
           :class="`pa-0 mt-3 d-flex flex-column align-center ${
