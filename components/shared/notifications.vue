@@ -42,7 +42,7 @@
             :count="count"
           />
           <not-have-notifications :getNotifications="getNotifications" />
-          <v-btn @click="verTodas" text> Ver Todas </v-btn>
+          <v-btn @click="verTodas" text v-if="getNotifications.length != 0"> Ver Todas </v-btn>
         </v-container>
       </div>
     </v-menu>
