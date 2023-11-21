@@ -3,6 +3,7 @@ export const state = () => ({
   notifications: [
     {
       title: 'Titulo 1',
+      id: 1,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: true,
@@ -12,6 +13,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 2',
+      id: 12,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: true,
@@ -21,6 +23,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 3',
+      id: 3,
       last_name: 'Fernandez',
       category: 'Carpintero',
       is_new: false,
@@ -30,6 +33,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 4',
+      id: 4,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: false,
@@ -39,6 +43,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 5',
+      id: 5,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: false,
@@ -48,6 +53,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 6',
+      id: 6,
       last_name: 'Fernandez',
       category: 'Carpintero',
       is_new: false,
@@ -57,6 +63,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 7',
+      id: 7,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: true,
@@ -66,6 +73,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 8',
+      id: 8,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: true,
@@ -75,6 +83,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 9',
+      id: 9,
       last_name: 'Fernandez',
       category: 'Carpintero',
       is_new: false,
@@ -84,6 +93,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 10',
+      id: 10,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: false,
@@ -93,6 +103,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 11',
+      id: 11,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: false,
@@ -102,6 +113,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 12',
+      id: 12,
       last_name: 'Fernandez',
       category: 'Carpintero',
       is_new: false,
@@ -111,6 +123,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 13',
+      id: 13,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: true,
@@ -120,6 +133,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 14',
+      id: 14,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: true,
@@ -129,6 +143,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 15',
+      id: 15,
       last_name: 'Fernandez',
       category: 'Carpintero',
       is_new: false,
@@ -138,6 +153,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 16',
+      id: 16,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: false,
@@ -147,6 +163,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 17',
+      id: 17,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: false,
@@ -156,6 +173,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 18',
+      id: 18,
       last_name: 'Fernandez',
       category: 'Carpintero',
       is_new: false,
@@ -165,6 +183,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 19',
+      id: 19,
       last_name: 'Martinez',
       category: 'Electricista',
       is_new: true,
@@ -174,6 +193,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 20',
+      id: 20,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: true,
@@ -183,6 +203,7 @@ export const state = () => ({
     },
     {
       title: 'Titulo 21',
+      id: 21,
       last_name: 'Moreno',
       category: 'Plomero',
       is_new: true,
@@ -196,13 +217,24 @@ export const mutations = {
   deleteAllNotifications(state) {
     state.notifications = []
   },
-  deleteOneNotification(state,id){
-    state.notifications = state.notifications.filter(i=>i.title != id)
-  }
+  updateNotification(state, id) {
+    const notification = state.notifications.find((i) => i.id == id)
+    notification.is_new = false
+  },
+  deleteOneNotification(state, id) {
+    state.notifications = state.notifications.filter((i) => i.id != id)
+  },
 }
 export const actions = {}
 export const getters = {
   getNotifications(state) {
     return state.notifications
+  },
+  getNewNotifications(state) {
+    let news = 0
+    for (let index = 0; index < state.notifications.length; index++) {
+      state.notifications[index].is_new == true && news++
+    }
+    return news
   },
 }

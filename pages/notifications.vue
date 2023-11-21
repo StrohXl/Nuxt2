@@ -54,6 +54,7 @@ export default {
   },
   computed: {
     getNotifications() {
+
       return this.$store.getters.getNotifications
     },
   },

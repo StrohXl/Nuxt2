@@ -1,8 +1,8 @@
 <template>
   <v-badge
     color="red"
-    :content="getNotifications.length"
-    :value="getNotifications.length"
+    :content="newNotifications"
+    :value="newNotifications"
     class="mx-6 mt-3 cursor-pointer barlowc-sb"
     offset-y="7"
   >
@@ -34,15 +34,15 @@
         </div>
         <v-container
           :class="`pa-0 mt-3 d-flex flex-column align-center ${
-            getNotifications.length == 0 && 'text-center'
+            notifications.length == 0 && 'text-center'
           }`"
         >
           <list-notifications
-            :getNotifications="getNotifications"
+            :getNotifications="notifications"
             :count="count"
           />
-          <not-have-notifications :getNotifications="getNotifications" />
-          <v-btn @click="verTodas" text v-if="getNotifications.length != 0"> Ver Todas </v-btn>
+          <not-have-notifications :getNotifications="notifications" />
+          <v-btn @click="verTodas" text v-if="notifications.length != 0"> Ver Todas </v-btn>
         </v-container>
       </div>
     </v-menu>
@@ -59,13 +59,15 @@ export default {
     return {
       count: 6,
       menu: false,
-      notifications: this.$store.state.notifications,
     }
   },
   computed: {
-    getNotifications() {
+    notifications() {
       return this.$store.getters.getNotifications
     },
+    newNotifications(){
+      return this.$store.getters.getNewNotifications
+    }
   },
   methods: {
     deleteAllNotification() {
