@@ -12,7 +12,17 @@
         >
           <v-list-item-avatar
             :size="
-              $vuetify.breakpoint.xs
+              pageNotification == false
+                ? $vuetify.breakpoint.xs
+                  ? 40
+                  : $vuetify.breakpoint.sm
+                  ? 45
+                  : $vuetify.breakpoint.md
+                  ? 50
+                  : $vuetify.breakpoint.lg
+                  ? 55
+                  : 60
+                : $vuetify.breakpoint.xs
                 ? 50
                 : $vuetify.breakpoint.sm
                 ? 55
@@ -29,19 +39,21 @@
           </v-list-item-avatar>
 
           <v-list-item-content style="padding-top: 16px; padding-bottom: 16px">
-            <v-list-item-title :class="pageNotification ? 'rmh' : 'capr'">
+            <v-list-item-title
+              :class="pageNotification ? 'rmh' : 'text-sm-body-2 text-md-body-1'"
+            >
               {{ item.title }}</v-list-item-title
             >
-            <v-list-item-subtitle class="capr">{{
-              item.date
-            }}</v-list-item-subtitle>
             <v-list-item-subtitle
-              class="v-list-subtitle-description-notification capr"
+              :class="pageNotification ? 'capr' : 'text-caption text-md-body-2'"
+              >{{ item.date }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle
+              :class="pageNotification ? 'capr' : 'text-caption text-md-body-2'"
               :style="
                 item.select == true
                   ? 'lineClamp: initial; -webkit-line-clamp: initial'
-                  : pageNotification == false &&
-                    'lineClamp: 1; -webkit-line-clamp: 1'
+                  : 'lineClamp: 1; -webkit-line-clamp: 1'
               "
               >{{ item.description }}</v-list-item-subtitle
             >
@@ -62,7 +74,13 @@
               <v-btn icon @click.stop="deleteNotification(item.id)">
                 <v-icon
                   :size="
-                    $vuetify.breakpoint.xs
+                    pageNotification == false
+                      ? $vuetify.breakpoint.xs
+                        ? 17
+                        : $vuetify.breakpoint.sm
+                        ? 20
+                        : 23
+                      : $vuetify.breakpoint.xs
                       ? 20
                       : $vuetify.breakpoint.sm
                       ? 23
@@ -74,10 +92,20 @@
                 </v-icon>
               </v-btn>
             </v-badge>
-            <v-btn small icon @click.stop="seeText(item.id)" class="mt-1 mt-sm-2 mt-md-2 mt-lg-3 ">
+            <v-btn small icon @click.stop="seeText(item.id)" class="mt-1">
               <v-icon
                 :size="
-                  $vuetify.breakpoint.xs ? 20 : $vuetify.breakpoint.sm ? 23 : 26
+                  pageNotification == false
+                    ? $vuetify.breakpoint.xs
+                      ? 17
+                      : $vuetify.breakpoint.sm
+                      ? 20
+                      : 23
+                    : $vuetify.breakpoint.xs
+                    ? 20
+                    : $vuetify.breakpoint.sm
+                    ? 23
+                    : 26
                 "
                 :style="item.select == true && 'transform: rotate(180deg);'"
                 color="grey lighten-1"

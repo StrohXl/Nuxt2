@@ -19,12 +19,11 @@
       </template>
       <div
         class="white pa-3"
-        :style="`width:${$vuetify.breakpoint.xs ? '300px' : $vuetify.breakpoint.sm? '400px': '450px' }`"
+        :style="`width:${$vuetify.breakpoint.xs ? '300px' :  '400px' }`"
       >
         <div class="d-flex align-baseline">
           <div class="rmh barlowc-m">Notificaciones</div>
           <v-spacer />
-
           <div
             class="capr cursor-pointer blueItem rubik-r"
             @click="deleteAllNotifications"
