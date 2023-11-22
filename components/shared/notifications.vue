@@ -27,7 +27,7 @@
 
           <div
             class="capr cursor-pointer blueItem rubik-r"
-            @click="deleteAllNotification"
+            @click="deleteAllNotifications"
           >
             Eliminar notificaciones
           </div>
@@ -42,7 +42,9 @@
             :count="count"
           />
           <not-have-notifications :getNotifications="notifications" />
-          <v-btn @click="verTodas" text v-if="notifications.length != 0"> Ver Todas </v-btn>
+          <v-btn @click="verTodas" text v-if="notifications.length != 0">
+            Ver Todas
+          </v-btn>
         </v-container>
       </div>
     </v-menu>
@@ -52,8 +54,9 @@
 <script>
 import listNotifications from './listNotifications.vue'
 import notHaveNotifications from './notHaveNotifications.vue'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 export default {
-  components: { notHaveNotifications,listNotifications },
+  components: { notHaveNotifications, listNotifications },
   name: 'Notifications',
   data() {
     return {
@@ -62,17 +65,17 @@ export default {
     }
   },
   computed: {
-    notifications() {
-      return this.$store.getters.getNotifications
-    },
-    newNotifications(){
-      return this.$store.getters.getNewNotifications
-    }
+    ...mapGetters({
+      newNotifications: 'getNewNotifications',
+    }),
+    ...mapState({
+      notifications: (state) => state.notification.notifications,
+    }),
   },
   methods: {
-    deleteAllNotification() {
-      this.$store.commit('deleteAllNotifications')
-    },
+    ...mapMutations({
+      deleteAllNotifications: 'deleteAllNotifications',
+    }),
     verTodas() {
       this.menu = false
       this.$router.push('/notifications')

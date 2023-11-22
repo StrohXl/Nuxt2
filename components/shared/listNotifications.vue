@@ -7,7 +7,7 @@
           :key="n"
           height="66"
           class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification"
-          @click="updateNotification(item.id)"
+          @click="updateNotifications(item.id)"
         >
           <v-list-item-avatar
             :size="
@@ -56,11 +56,11 @@
               overlap
               dot
             >
-              <v-btn icon @click="deleteNotification(item.id)">
+              <v-btn icon @click.stop="deleteNotification(item.id)">
                 <v-icon color="grey darken-3"> mdi-delete </v-icon>
               </v-btn>
             </v-badge>
-            <v-btn small icon @click="seeText">
+            <v-btn small icon @click.stop="seeText(item.id)">
               <v-icon color="grey lighten-1"> mdi-chevron-down </v-icon>
             </v-btn>
           </v-list-item-action>
@@ -70,6 +70,7 @@
   </v-list>
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'listNotifications',
   props: {
@@ -92,13 +93,17 @@ export default {
     }
   },
   methods: {
-    updateNotification(id){
-      this.$store.commit('updateNotification', id)
+    ...mapMutations(['deleteOneNotification', 'updateNotification']),
+    updateNotifications(id) {
+      this.updateNotification(id)
+      this.$router.push('/?query=' + id)
     },
     deleteNotification(id) {
-      this.$store.commit('deleteOneNotification', id)
+      this.deleteOneNotification(id)
     },
-    seeText() {},
+    seeText(id) {
+      this.updateNotification(id)
+    },
   },
 }
 </script>
