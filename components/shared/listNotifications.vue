@@ -1,6 +1,6 @@
 <template>
-  <v-list three-line nav class="mt-3 mt-sm-4 mt-md-5">
-    <v-list-item-group color="primary">
+  <v-list three-line nav class="mt-1 mt-sm-2 mt-md-3">
+    <v-list-item-group color="primary" v-model="selected">
       <template v-for="(item, n) in getNotifications">
         <v-list-item
           v-if="n + 1 < count"
@@ -8,6 +8,7 @@
           height="66"
           class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification"
           @click="updateNotifications(item.id)"
+          :style="item.is_new && 'background: #f5f5f5'"
         >
           <v-list-item-avatar
             :size="
@@ -27,8 +28,8 @@
             <v-img :src="item.avatar" />
           </v-list-item-avatar>
 
-          <v-list-item-content>
-            <v-list-item-title :class="pageNotification ? 'rmh' : 'subr'">
+          <v-list-item-content style="padding-top: 16px; padding-bottom: 16px">
+            <v-list-item-title :class="pageNotification ? 'rmh' : 'capr'">
               {{ item.title }}</v-list-item-title
             >
             <v-list-item-subtitle class="capr">{{
@@ -37,16 +38,18 @@
             <v-list-item-subtitle
               class="v-list-subtitle-description-notification capr"
               :style="
-                pageNotification == false &&
-                'lineClamp: 1; -webkit-line-clamp: 1'
+                item.select == true
+                  ? 'lineClamp: initial; -webkit-line-clamp: initial'
+                  : pageNotification == false &&
+                    'lineClamp: 1; -webkit-line-clamp: 1'
               "
               >{{ item.description }}</v-list-item-subtitle
             >
           </v-list-item-content>
 
           <v-list-item-action
-            class="mt-2 align-center"
-            style="align-self: center"
+            class="align-center"
+            style="align-self: center; margin: 0"
           >
             <v-badge
               :value="item.is_new ? 1 : 0"
@@ -57,11 +60,30 @@
               dot
             >
               <v-btn icon @click.stop="deleteNotification(item.id)">
-                <v-icon color="grey darken-3"> mdi-delete </v-icon>
+                <v-icon
+                  :size="
+                    $vuetify.breakpoint.xs
+                      ? 20
+                      : $vuetify.breakpoint.sm
+                      ? 23
+                      : 26
+                  "
+                  color="grey darken-3"
+                >
+                  mdi-delete
+                </v-icon>
               </v-btn>
             </v-badge>
-            <v-btn small icon @click.stop="seeText(item.id)">
-              <v-icon color="grey lighten-1"> mdi-chevron-down </v-icon>
+            <v-btn small icon @click.stop="seeText(item.id)" class="mt-1 mt-sm-2 mt-md-2 mt-lg-3 ">
+              <v-icon
+                :size="
+                  $vuetify.breakpoint.xs ? 20 : $vuetify.breakpoint.sm ? 23 : 26
+                "
+                :style="item.select == true && 'transform: rotate(180deg);'"
+                color="grey lighten-1"
+              >
+                mdi-chevron-down
+              </v-icon>
             </v-btn>
           </v-list-item-action>
         </v-list-item>
@@ -73,6 +95,7 @@
 import { mapMutations } from 'vuex'
 export default {
   name: 'listNotifications',
+  selected: 0,
   props: {
     getNotifications: {
       default: [],
@@ -93,16 +116,21 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['deleteOneNotification', 'updateNotification']),
+    ...mapMutations([
+      'deleteOneNotification',
+      'updateNotification',
+      'readNotification',
+    ]),
     updateNotifications(id) {
       this.updateNotification(id)
-      this.$router.push('/?query=' + id)
+      this.$router.push('/')
     },
     deleteNotification(id) {
       this.deleteOneNotification(id)
     },
     seeText(id) {
       this.updateNotification(id)
+      this.readNotification(id)
     },
   },
 }

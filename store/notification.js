@@ -10,6 +10,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización asdasdsadsadas',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 2',
@@ -20,6 +21,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion asd sadsadasdas',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 3',
@@ -30,6 +32,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
       description: 'Te ha programado una visita presencial',
       date: '21 de febrero, 08:21 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 4',
@@ -40,6 +43,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 5',
@@ -50,6 +54,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 6',
@@ -60,6 +65,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
       description: 'Te ha programado una visita presencial',
       date: '21 de febrero, 08:21 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 7',
@@ -70,6 +76,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 8',
@@ -80,6 +87,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 9',
@@ -90,6 +98,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
       description: 'Te ha programado una visita presencial',
       date: '21 de febrero, 08:21 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 10',
@@ -100,6 +109,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 11',
@@ -110,6 +120,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 12',
@@ -120,6 +131,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
       description: 'Te ha programado una visita presencial',
       date: '21 de febrero, 08:21 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 13',
@@ -130,6 +142,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización asdasdsadsadas',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 14',
@@ -140,6 +153,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion asd sadsadasdas',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 15',
@@ -150,6 +164,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
       description: 'Te ha programado una visita presencial',
       date: '21 de febrero, 08:21 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 16',
@@ -160,6 +175,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 17',
@@ -170,6 +186,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 18',
@@ -180,6 +197,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/34.jpg',
       description: 'Te ha programado una visita presencial',
       date: '21 de febrero, 08:21 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 19',
@@ -190,6 +208,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
       description: 'Te ha enviado una cotización',
       date: '2 de febrero. 12:32 p.m.',
+       select: false,
     },
     {
       title: 'Titulo 20',
@@ -200,6 +219,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
     {
       title: 'Titulo 21',
@@ -210,6 +230,7 @@ export const state = () => ({
       avatar: 'https://randomuser.me/api/portraits/men/33.jpg',
       description: 'Te ha rechazado una cotizacion',
       date: '22 de febrero, 09:27 a.m.',
+       select: false,
     },
   ],
 })
@@ -224,6 +245,10 @@ export const mutations = {
   deleteOneNotification(state, id) {
     state.notifications = state.notifications.filter((i) => i.id != id)
   },
+  readNotification(state,id){
+    const notification = state.notifications.find((i) => i.id == id)
+    notification.select = !notification.select
+  }
 }
 export const actions = {}
 export const getters = {

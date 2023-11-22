@@ -19,7 +19,7 @@
       </template>
       <div
         class="white pa-3"
-        :style="`width:${$vuetify.breakpoint.mdAndUp ? '400px' : '300px'}`"
+        :style="`width:${$vuetify.breakpoint.xs ? '300px' : $vuetify.breakpoint.sm? '400px': '450px' }`"
       >
         <div class="d-flex align-baseline">
           <div class="rmh barlowc-m">Notificaciones</div>

@@ -6,7 +6,7 @@
       :style="`width:${
         $vuetify.breakpoint.xs
           ? '100%'
-          : $vuetify.breakpoint.width > 700 && '650px'
+          : $vuetify.breakpoint.width > 700 && '750px'
       }`"
     >
       <div class="d-flex align-baseline">
