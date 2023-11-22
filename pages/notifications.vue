@@ -15,14 +15,14 @@
 
         <div
           class="capr cursor-pointer blueItem rubik-r"
-          @click="deleteAllNotification"
+          @click="deleteAllNotifications"
         >
           Eliminar notificaciones
         </div>
       </div>
 
       <list-notifications
-        :getNotifications="getNotifications"
+        :getNotifications="notifications"
         :count="count"
         :pageNotification="true"
       />
@@ -31,16 +31,17 @@
           class="my-1 my-md-2 capr"
           @click="verMas"
           text
-          v-if="getNotifications.length + 1 > count"
+          v-if="notifications.length + 1 > count"
         >
           Ver Mas
         </v-btn>
-        <not-have-notifications :getNotifications="getNotifications" />
+        <not-have-notifications :getNotifications="notifications" />
       </div>
     </v-card>
   </div>
 </template>
 <script>
+import { mapState, mapMutations, mapGetters } from 'vuex'
 import listNotifications from '~/components/shared/listNotifications.vue'
 import notHaveNotifications from '~/components/shared/notHaveNotifications.vue'
 export default {
@@ -49,19 +50,18 @@ export default {
   data() {
     return {
       count: 11,
-      notifications: this.$store.state.notifications,
     }
   },
   computed: {
-    getNotifications() {
-
-      return this.$store.getters.getNotifications
-    },
+    ...mapState({
+      notifications: (state) => state.notification.notifications,
+    }),
   },
   methods: {
-    deleteAllNotification() {
-      this.$store.commit('deleteAllNotifications')
-    },
+    ...mapMutations({
+      deleteAllNotifications: 'deleteAllNotifications',
+    }),
+
     verMas() {
       this.count += 10
     },
