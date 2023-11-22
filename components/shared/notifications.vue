@@ -6,7 +6,14 @@
     class="mx-6 mt-3 cursor-pointer barlowc-sb"
     offset-y="7"
   >
-    <v-menu bottom offset-y left v-model="menu" :close-on-content-click="false">
+    <v-menu
+      :max-height="this.$vuetify.breakpoint.mdAndDown == true ? '450' : auto"
+      bottom
+      offset-y
+      left
+      v-model="menu"
+      :close-on-content-click="false"
+    >
       <template #activator="{ on, attrs }">
         <v-icon
           v-bind="attrs"
@@ -19,7 +26,7 @@
       </template>
       <div
         class="white pa-3"
-        :style="`width:${$vuetify.breakpoint.xs ? '300px' :  '400px' }`"
+        :style="`width:${$vuetify.breakpoint.xs ? '300px' : '400px'}`"
       >
         <div class="d-flex align-baseline">
           <div class="rmh barlowc-m">Notificaciones</div>
@@ -86,5 +93,11 @@ export default {
 <style scoped>
 .rotate-notification {
   transform: rotate(15deg) !important;
+}
+.menu-notification {
+  overflow: hidden;
+}
+.menu-notification:hover {
+  overflow: auto;
 }
 </style>

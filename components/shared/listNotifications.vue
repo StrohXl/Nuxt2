@@ -8,7 +8,7 @@
           height="66"
           class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification"
           @click="updateNotifications(item.id)"
-          :style="item.is_new && 'background: #f5f5f5'"
+          :style="item.is_new && 'background: #f3f3f3'"
         >
           <v-list-item-avatar
             :size="
