@@ -2,7 +2,9 @@
   <v-list
     three-line
     nav
-    :class="`${pageNotification == true ? 'mt-1 mt-sm-2 mt-md-3' : ' mt-0 '}  px-0 py-0`"
+    :class="`${
+      pageNotification == true ? 'mt-1 mt-sm-2 mt-md-3' : ' mt-0 px-0 py-0'
+    }`"
   >
     <v-list-item-group color="primary" v-model="selected">
       <template v-for="(item, n) in getNotifications">
@@ -12,10 +14,11 @@
           class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification mb-1"
           @click="updateNotifications(item.id)"
           :style="`${
-            item.is_new && 'background: #f3f3f3'
-          } ;min-height: 0 !important; ${
-            item.select == false && ' height: 75px !important;'
-          }`"
+            pageNotification == false &&
+            `min-height: 0 !important; ${
+              item.select == false && 'height: 75px !important;'
+            }`
+          }${item.is_new && ';background: #f3f3f3;'} `"
         >
           <v-list-item-avatar
             :size="
