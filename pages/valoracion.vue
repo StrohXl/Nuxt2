@@ -13,7 +13,7 @@
           ? '90%'
           : '85%'
       } `"
-      class="header-valoracion mt-13 mt-sm-14 mt-md-15 mt-lg-16 d-flex mx-auto"
+      class="header-valoracion mt-10 mt-sm-11 mt-md-12 mt-lg-13 d-flex mx-auto"
     >
       <v-avatar
         :size="
@@ -53,7 +53,7 @@
           : '85%'
       } `"
     >
-      <h2 class="text-center mt-13 mt-sm-14 mt-md-15 mt-lg-16 rh">
+      <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
         TRABAJO REALIZADO
       </h2>
       <p class="labelGray text-justify mt-5 mt-sm-7 mt-md-8 mt-lg-9 capr">
@@ -73,7 +73,7 @@
       </p>
     </div>
     <div
-      class="opinion"
+      class="mx-auto"
       :style="`width: ${
         $vuetify.breakpoint.xs
           ? '100%'
@@ -84,31 +84,91 @@
           : '85%'
       } `"
     >
-      <h2 class="text-center mt-13 mt-sm-14 mt-md-15 mt-lg-16 rh">
+      <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
         INGRESE SU OPINION DEL SERVICIO RECIBIDO
       </h2>
-      <v-container fluid class="mt-2 mt-sm-4 mt-md-8">
+      <v-container fluid class="mt-2 mt-sm-4 mt-md-8 px-0">
         <v-textarea
+          class="capr"
           name="input-7-1"
           background-color="transparent"
           filled
           outlined
           auto-grow
-          value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
         ></v-textarea>
       </v-container>
     </div>
-    <v-rating
-      hover
-      color="orange"
-      background-color="dark"
-      length="5"
-      size="30"
-      value="5"
-    ></v-rating>
+    <div
+      class="mx-auto"
+      :style="`width: ${
+        $vuetify.breakpoint.xs
+          ? '100%'
+          : $vuetify.breakpoint.sm
+          ? '95%'
+          : $vuetify.breakpoint.md
+          ? '90%'
+          : '85%'
+      } `"
+    >
+      <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
+        INDIQUE SU VALORACION
+      </h2>
+      <v-container fluid class="mt-2 mt-sm-4 mt-md-8 px-0">
+        <ul>
+          <template v-for="(i, index) in valoracion">
+            <li
+              :key="index"
+              style="list-style: none"
+              class="mt-2 mt-sm-3 mt-md-4 mt-lg-5"
+            >
+              <h5 class="subr light">{{ i.title }}</h5>
+              <div class="d-flex align-center">
+                <v-rating
+                  v-model="i.value"
+                  hover
+                  half-increments
+                  color="orange"
+                  background-color="dark"
+                  length="5"
+                  size="20"
+                ></v-rating>
+                <span class="ml-1 ml-sm-2 ml-md-3">{{ i.value }}</span>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </v-container>
+    </div>
   </div>
 </template>
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      valoracion: {
+        fiabilidad: {
+          title: 'Fiabilidad',
+          value: 2.5,
+        },
+        empatia: {
+          title: 'Empatia',
+          value: 2.5,
+        },
+        confianza: {
+          title: 'Confianza/Seguridad',
+          value: 2.5,
+        },
+        capacidad: {
+          title: 'Capacidad de respuesta',
+          value: 2.5,
+        },
+        tangibles: {
+          title: 'Tangibles',
+          value: 2.5,
+        },
+      },
+    }
+  },
+}
 </script>
 <style></style>

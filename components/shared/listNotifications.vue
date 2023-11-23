@@ -51,7 +51,7 @@
           <v-list-item-content style="padding-top: 16px; padding-bottom: 16px">
             <v-list-item-title
               :class="`${
-                pageNotification ? 'rmh' : ' text-sm-body-2 text-md-body-1'
+                pageNotification ? 'rmh' : 'text-caption text-sm-body-2'
               } ${item.is_new && ' bold'}`"
             >
               {{ item.title }}</v-list-item-title
@@ -59,13 +59,13 @@
             <v-list-item-subtitle
               :style="item.is_new && 'color:#000'"
               :class="`${
-                pageNotification ? 'capr' : 'text-caption text-md-body-2'
+                pageNotification ? 'capr' : `text-caption`
               } ${item.is_new && ' bold'}`"
               >{{ item.date }}</v-list-item-subtitle
             >
             <v-list-item-subtitle
               :class="`${
-                pageNotification ? 'capr' : 'text-caption text-md-body-2'
+                pageNotification ? 'capr' : 'text-caption'
               } ${item.is_new && ' bold'}`"
               :style="`${
                 item.select == true
