@@ -1,10 +1,11 @@
 export const state = () => ({
   valoracionDeServicio: {
+    valoraciones: {},
     opinion: '',
   },
 })
 export const mutations = {
-  updateValoracion(state, text) {
-    state.valoracionDeServicio.opinion = text
+  updateValoracion(state, payload) {
+    state.valoracionDeServicio = payload
   },
 }

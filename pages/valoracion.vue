@@ -123,13 +123,20 @@
                     color="orange"
                     background-color="dark"
                     length="5"
-                    :size="$vuetify.breakpoint.xs? 20: $vuetify.breakpoint.sm? 25: 30"
+                    :size="
+                      $vuetify.breakpoint.xs
+                        ? 20
+                        : $vuetify.breakpoint.sm
+                        ? 25
+                        : 30
+                    "
                   ></v-rating>
                   <span v-if="i.value != 0" class="ml-1 ml-sm-2 ml-md-3 subr">{{
                     i.value
                   }}</span>
                 </div>
               </li>
+
             </template>
           </ul>
         </v-container>
@@ -140,14 +147,7 @@
           :width="
             $vuetify.breakpoint.xs ? 250 : $vuetify.breakpoint.sm ? 275 : 300
           "
-          :disabled="
-            !valid ||
-            this.valoracion.capacidad.value == 0 ||
-            this.valoracion.tangibles.value == 0 ||
-            this.valoracion.confianza.value == 0 ||
-            this.valoracion.fiabilidad.value == 0 ||
-            this.valoracion.empatia.value == 0
-          "
+          :disabled="!valid"
           color="primary"
           class="my-8 my-sm-9 my-md-10 text-caption text-sm-body-2 text-md-body-1"
           >GUARDAR</v-btn
@@ -170,23 +170,23 @@ export default {
       valoracion: {
         fiabilidad: {
           title: 'Fiabilidad',
-          value: null,
+          value: 0,
         },
         empatia: {
           title: 'Empatia',
-          value: null,
+          value: 0,
         },
         confianza: {
           title: 'Confianza/Seguridad',
-          value: null,
+          value: 0,
         },
         capacidad: {
           title: 'Capacidad de respuesta',
-          value: null,
+          value: 0,
         },
         tangibles: {
           title: 'Tangibles',
-          value: null,
+          value: 0,
         },
       },
       opinion: '',
@@ -201,8 +201,16 @@ export default {
     ...mapMutations(['updateValoracion']),
     submitForm(e) {
       if (this.$refs.form.validate()) {
-        this.updateValoracion(this.opinion)
-
+        this.updateValoracion({
+          opinion: this.opinion,
+          valoracion: {
+            fiabilidad: this.valoracion.fiabilidad.value,
+            capacidad: this.valoracion.capacidad.value,
+            tangibles: this.valoracion.tangibles.value,
+            confianza: this.valoracion.confianza.value,
+            empatia: this.valoracion.empatia.value,
+          },
+        })
       }
     },
   },
