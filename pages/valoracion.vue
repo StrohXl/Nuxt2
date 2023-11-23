@@ -72,6 +72,32 @@
         quis. Quidem sequi maxime a libero impedit ab.
       </p>
     </div>
+    <div
+      class="opinion"
+      :style="`width: ${
+        $vuetify.breakpoint.xs
+          ? '100%'
+          : $vuetify.breakpoint.sm
+          ? '95%'
+          : $vuetify.breakpoint.md
+          ? '90%'
+          : '85%'
+      } `"
+    >
+      <h2 class="text-center mt-13 mt-sm-14 mt-md-15 mt-lg-16 rh">
+        INGRESE SU OPINION DEL SERVICIO RECIBIDO
+      </h2>
+      <v-container fluid class="mt-2 mt-sm-4 mt-md-8">
+        <v-textarea
+          name="input-7-1"
+          background-color="transparent"
+          filled
+          outlined
+          auto-grow
+          value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+        ></v-textarea>
+      </v-container>
+    </div>
     <v-rating
       hover
       color="orange"

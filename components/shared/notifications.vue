@@ -7,7 +7,7 @@
     offset-y="7"
   >
     <v-menu
-      :max-height="this.$vuetify.breakpoint.mdAndDown == true ? '450' : auto"
+
       bottom
       offset-y
       left
@@ -66,7 +66,7 @@ export default {
   name: 'Notifications',
   data() {
     return {
-      count: 6,
+      count: 5,
       menu: false,
     }
   },

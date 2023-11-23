@@ -1,14 +1,21 @@
 <template>
-  <v-list three-line nav class="mt-1 mt-sm-2 mt-md-3">
+  <v-list
+    three-line
+    nav
+    :class="`${pageNotification == true ? 'mt-1 mt-sm-2 mt-md-3' : ' mt-0 '}  px-0 py-0`"
+  >
     <v-list-item-group color="primary" v-model="selected">
       <template v-for="(item, n) in getNotifications">
         <v-list-item
           v-if="n + 1 < count"
           :key="n"
-          height="66"
-          class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification"
+          class="d-flex elevation-0 pr-1 pl-2 v-list-item-notification mb-1"
           @click="updateNotifications(item.id)"
-          :style="item.is_new && 'background: #f3f3f3'"
+          :style="`${
+            item.is_new && 'background: #f3f3f3'
+          } ;min-height: 0 !important; ${
+            item.select == false && ' height: 75px !important;'
+          }`"
         >
           <v-list-item-avatar
             :size="
@@ -32,7 +39,7 @@
                 ? 65
                 : 70
             "
-            class="mr-4 borderAvatar"
+            class="mr-4 borderAvatar my-0"
             style="align-self: center"
           >
             <v-img :src="item.avatar" />
@@ -40,21 +47,28 @@
 
           <v-list-item-content style="padding-top: 16px; padding-bottom: 16px">
             <v-list-item-title
-              :class="pageNotification ? 'rmh' : 'text-sm-body-2 text-md-body-1'"
+              :class="`${
+                pageNotification ? 'rmh' : ' text-sm-body-2 text-md-body-1'
+              } ${item.is_new && ' bold'}`"
             >
               {{ item.title }}</v-list-item-title
             >
             <v-list-item-subtitle
-              :class="pageNotification ? 'capr' : 'text-caption text-md-body-2'"
+              :style="item.is_new && 'color:#000'"
+              :class="`${
+                pageNotification ? 'capr' : 'text-caption text-md-body-2'
+              } ${item.is_new && ' bold'}`"
               >{{ item.date }}</v-list-item-subtitle
             >
             <v-list-item-subtitle
-              :class="pageNotification ? 'capr' : 'text-caption text-md-body-2'"
-              :style="
+              :class="`${
+                pageNotification ? 'capr' : 'text-caption text-md-body-2'
+              } ${item.is_new && ' bold'}`"
+              :style="`${
                 item.select == true
                   ? 'lineClamp: initial; -webkit-line-clamp: initial'
                   : 'lineClamp: 1; -webkit-line-clamp: 1'
-              "
+              } ${item.is_new && ' color:#000'}`"
               >{{ item.description }}</v-list-item-subtitle
             >
           </v-list-item-content>
