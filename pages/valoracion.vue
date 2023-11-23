@@ -1,17 +1,11 @@
 <template>
-  <div class="px-5 px-sm-10 px-md-15 px-lg-16">
+  <div class="px-2 px-md-15 px-lg-16">
     <h1 class="text-center mt-5 mt-sm-6 mt-md-7 mt-lg-8 rh">
       VALORACION DE SERVICIO
     </h1>
     <div
       :style="`width: ${
-        $vuetify.breakpoint.xs
-          ? '100%'
-          : $vuetify.breakpoint.sm
-          ? '95%'
-          : $vuetify.breakpoint.md
-          ? '90%'
-          : '85%'
+        $vuetify.breakpoint.xs ? '100%' : $vuetify.breakpoint.md ? '95%' : '90%'
       } `"
       class="header-valoracion mt-10 mt-sm-11 mt-md-12 mt-lg-13 d-flex mx-auto"
     >
@@ -44,13 +38,7 @@
     <div
       class="trabajo realizado mx-auto"
       :style="`width: ${
-        $vuetify.breakpoint.xs
-          ? '100%'
-          : $vuetify.breakpoint.sm
-          ? '95%'
-          : $vuetify.breakpoint.md
-          ? '90%'
-          : '85%'
+        $vuetify.breakpoint.xs ? '100%' : $vuetify.breakpoint.md ? '95%' : '90%'
       } `"
     >
       <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
@@ -72,102 +60,151 @@
         quis. Quidem sequi maxime a libero impedit ab.
       </p>
     </div>
-    <div
-      class="mx-auto"
-      :style="`width: ${
-        $vuetify.breakpoint.xs
-          ? '100%'
-          : $vuetify.breakpoint.sm
-          ? '95%'
-          : $vuetify.breakpoint.md
-          ? '90%'
-          : '85%'
-      } `"
+    <v-form
+      ref="form"
+      v-model="valid"
+      lazy-validation
+      @submit.prevent="submitForm"
     >
-      <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
-        INGRESE SU OPINION DEL SERVICIO RECIBIDO
-      </h2>
-      <v-container fluid class="mt-2 mt-sm-4 mt-md-8 px-0">
-        <v-textarea
-          class="capr"
-          name="input-7-1"
-          background-color="transparent"
-          filled
-          outlined
-          auto-grow
-        ></v-textarea>
-      </v-container>
-    </div>
-    <div
-      class="mx-auto"
-      :style="`width: ${
-        $vuetify.breakpoint.xs
-          ? '100%'
-          : $vuetify.breakpoint.sm
-          ? '95%'
-          : $vuetify.breakpoint.md
-          ? '90%'
-          : '85%'
-      } `"
-    >
-      <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
-        INDIQUE SU VALORACION
-      </h2>
-      <v-container fluid class="mt-2 mt-sm-4 mt-md-8 px-0">
-        <ul>
-          <template v-for="(i, index) in valoracion">
-            <li
-              :key="index"
-              style="list-style: none"
-              class="mt-2 mt-sm-3 mt-md-4 mt-lg-5"
-            >
-              <h5 class="subr light">{{ i.title }}</h5>
-              <div class="d-flex align-center">
-                <v-rating
-                  v-model="i.value"
-                  hover
-                  half-increments
-                  color="orange"
-                  background-color="dark"
-                  length="5"
-                  size="20"
-                ></v-rating>
-                <span class="ml-1 ml-sm-2 ml-md-3">{{ i.value }}</span>
-              </div>
-            </li>
-          </template>
-        </ul>
-      </v-container>
-    </div>
+      <div
+        class="mx-auto"
+        :style="`width: ${
+          $vuetify.breakpoint.xs
+            ? '100%'
+            : $vuetify.breakpoint.md
+            ? '95%'
+            : '90%'
+        } `"
+      >
+        <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
+          INGRESE SU OPINION DEL SERVICIO RECIBIDO
+        </h2>
+        <v-container fluid class="mt-2 mt-sm-4 mt-md-8 px-0">
+          <v-textarea
+            :rules="opinionRules"
+            v-model="opinion"
+            class="capr"
+            name="input-7-1"
+            background-color="transparent"
+            filled
+            outlined
+            auto-grow
+            auto-focus
+          ></v-textarea>
+        </v-container>
+      </div>
+      <div
+        class="mx-auto"
+        :style="`width: ${
+          $vuetify.breakpoint.xs
+            ? '100%'
+            : $vuetify.breakpoint.md
+            ? '95%'
+            : '90%'
+        } `"
+      >
+        <h2 class="text-center mt-10 mt-sm-11 mt-md-12 mt-lg-13 rh">
+          INDIQUE SU VALORACION
+        </h2>
+        <v-container fluid class="mt-2 mt-sm-4 mt-md-8 px-0">
+          <ul class="pl-0 ml-0">
+            <template v-for="(i, index) in valoracion">
+              <li
+                :key="index"
+                style="list-style: none"
+                class="mt-2 mt-sm-3 mt-md-4 mt-lg-5"
+              >
+                <h5 class="subr light">{{ i.title }}</h5>
+                <div class="d-flex align-center">
+                  <v-rating
+                    v-model="i.value"
+                    hover
+                    half-increments
+                    color="orange"
+                    background-color="dark"
+                    length="5"
+                    :size="$vuetify.breakpoint.xs? 20: $vuetify.breakpoint.sm? 25: 30"
+                  ></v-rating>
+                  <span v-if="i.value != 0" class="ml-1 ml-sm-2 ml-md-3 subr">{{
+                    i.value
+                  }}</span>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </v-container>
+      </div>
+      <div class="d-flex justify-center">
+        <v-btn
+          type="submit"
+          :width="
+            $vuetify.breakpoint.xs ? 250 : $vuetify.breakpoint.sm ? 275 : 300
+          "
+          :disabled="
+            !valid ||
+            this.valoracion.capacidad.value == 0 ||
+            this.valoracion.tangibles.value == 0 ||
+            this.valoracion.confianza.value == 0 ||
+            this.valoracion.fiabilidad.value == 0 ||
+            this.valoracion.empatia.value == 0
+          "
+          color="primary"
+          class="my-8 my-sm-9 my-md-10 text-caption text-sm-body-2 text-md-body-1"
+          >GUARDAR</v-btn
+        >
+      </div>
+    </v-form>
   </div>
 </template>
 <script>
+import { mapMutations, mapState } from 'vuex'
 export default {
   data() {
     return {
+      valid: true,
+      opinionRules: [
+        (v) => !!v || 'Opinion es requerida',
+        (v) =>
+          (v && v.length >= 10) || 'Opinion debe de tener minimo 10 caracteres',
+      ],
       valoracion: {
         fiabilidad: {
           title: 'Fiabilidad',
-          value: 2.5,
+          value: null,
         },
         empatia: {
           title: 'Empatia',
-          value: 2.5,
+          value: null,
         },
         confianza: {
           title: 'Confianza/Seguridad',
-          value: 2.5,
+          value: null,
         },
         capacidad: {
           title: 'Capacidad de respuesta',
-          value: 2.5,
+          value: null,
         },
         tangibles: {
           title: 'Tangibles',
-          value: 2.5,
+          value: null,
         },
       },
+      opinion: '',
     }
+  },
+  computed: {
+    ...mapState({
+      valoracionState: (state) => state.valoracion.valoracionDeServicio,
+    }),
+  },
+  methods: {
+    ...mapMutations(['updateValoracion']),
+    submitForm(e) {
+      if (this.$refs.form.validate()) {
+        this.updateValoracion(this.opinion)
+
+      }
+    },
   },
 }
 </script>

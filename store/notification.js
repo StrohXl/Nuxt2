@@ -1,5 +1,4 @@
 export const state = () => ({
-  msg: 'holaaaaaa',
   notifications: [
     {
       title: 'Titulo 1',
