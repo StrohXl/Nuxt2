@@ -99,13 +99,23 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Calendario',
           to: '/'
         },
         {
+          icon: 'mdi-star',
+          title: 'Valoracion',
+          to: '/valoracion'
+        },
+        {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
+          title: 'Validar usuario',
           to: '/inicio'
+        },
+        {
+          icon: 'far fa-bell',
+          title: 'Notificaciones',
+          to: '/notifications'
         }
       ],
       miniVariant: false,
