@@ -106,7 +106,12 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inicio'
-        }
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Expert Profile',
+          to: '/expert/profile'
+        },
       ],
       miniVariant: false,
       right: true,
